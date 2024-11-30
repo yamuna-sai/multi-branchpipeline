@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+    tools {
+        maven 'Maven 3.8.6' // Ensure Maven is configured in Jenkins
+    }
+    environment {
+       CURRENT_BRANCH = "${env.BRANCH_NAME}"
+    }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: "${env.BRANCH_NAME}", url: 'https://github.com/yamuna-sai/multi-branchpipeline/new/main'
+            }
+        }
+        stage('Build, Test, and Package') {
+            steps {
+                sh 'mvn clean install'
+            }
+        stage('Publish Artifact') {
+            steps {
+                script {
+                    echo "Publishing artifact for branch: ${CURRENT_BRANCH}..."
+                }
+              //pulish artifactory steps.
+              }
+        stage('Deploy') {
+            when {
+                branch 'main'
+            }
+            steps {
+                echo 'Deploying to dev...'
+                // Add deployment steps here
+            }
+        }
+    }   
+}
