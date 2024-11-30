@@ -1,0 +1,30 @@
+Setup multi branch pipeline for a simple github repository that builds diff branches independently for a java-springboot based github project
+
+step1:Install jenkins and plugins
+	- install the multibranch plugin.
+	- install github plugin.
+	- install maven plugin.
+	
+step2: create repository.
+	- create a github repository for source code.
+	- required valid pom.xml file for build.
+	
+step3:configure multibranch pipeline in jenkins.
+  - login to jenkins.
+  - create a new multi branch pipeline
+     newitem---> multibranch pipeline -->give a name --> ok
+  - set up source code management
+    - add git hub 
+      - provide github URL.
+      - Add credentials.
+      - set the branch discovery strategy
+      - configure build triggers
+        add webhook in jenkins which automatically detects the changes from github 0r build periodically by scheduling the cront job.
+  step4: jenkins file
+        creating jenkins file
+
+  step5: verifying pipeline
+    - Commit changes to different branches in the repository.
+    - Jenkins should automatically detect the branches and build them independently.
+    - Check the console logs to verify the build process.
+      
