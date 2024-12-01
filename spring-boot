@@ -27,4 +27,24 @@ step3:configure multibranch pipeline in jenkins.
     - Commit changes to different branches in the repository.
     - Jenkins should automatically detect the branches and build them independently.
     - Check the console logs to verify the build process.
-      
+ 
+***********************************************************************************************************************************************************
+Configuring GitHub webhooks in Jenkins     
+	step1: 
+		- Open your GitHub repository in a browser.
+		- Go to Settings > Webhooks.
+		- Click Add webhook.
+		- Enter jenkins github webhook url.
+			http://<your-jenkins-server>/github-webhook/
+		- Content type: Select application/json.
+		- Secret (Optional): Enter a secret key for secure communication. Save this value; you’ll need to configure it in Jenkins.
+	step2:
+		- Choose Let me select individual events.
+		- Check the following events:
+			Push events: Triggers on new commits or pushes.
+			Pull request events: Triggers on pull requests (for Multibranch Pipelines).
+		- then click add webhook.
+
+
+
+
